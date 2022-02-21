@@ -8,7 +8,7 @@
 https://github.com/fleur-hana/lp-practice-static/projects/2
 
 # サイトのURL
-http://fleur.s239.xrea.com/
+http://fleur87hana.s239.xrea.com/
 
 # 必要な情報
 XREA.COM NEW SIGNUP に書いてある
