@@ -20,10 +20,15 @@ ssh-copy-id fleur87hana@s239.xrea.com
 
 cat ~/.ssh/authorized_keys
 //渡した公開鍵を見る
+```
 
+# リリース手順
+プロジェクトのディレクトリで以下のコマンドを実行
+```
 sh deploy.sh
 //作成したシェルスクリプトでリリースするコマンド
 ```
+
 
 # 必要な情報
 XREA.COM NEW SIGNUP に書いてある
