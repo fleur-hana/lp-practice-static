@@ -7,12 +7,24 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
-    
+    - name: 🔍 Allow IP
+      run: |
+        GLOBAL_IP=`curl inet-ip.info`
+        curl -X POST https://api.xrea.com/v1/tool/ssh_ip_allow \
+        -d "account=fleur87hana" \
+        -d "server_name=s239.xrea.com" \
+        -d "api_secret_key=daKiZZFGtYMtRJwjDYVmSfTHhqy2MsfP" \
+        -d "param[addr]=${GLOBAL_IP}"
+        
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.2.0
-      with:
-        server: s239.xrea.com
-        username: fleur87hana
-        password: ${{ secrets.FTP_PASSWORD }}
-        protocol: ftps
-        server-dir: ./lp-practice-static/
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+      run: |
+        sleep 300
+        mkdir -p ~/.ssh
+        echo "${SSH_KEY}" > ~/.ssh/id_rsa
+        chmod 400 ~/.ssh/id_rsa
+        ssh-keyscan s239.xrea.com >> ~/.ssh/known_hosts
+        rsync -av ./ fleur87hana@s239.xrea.com:~/lp-practice-static
+        
+      
