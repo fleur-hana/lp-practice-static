@@ -15,7 +15,7 @@ jobs:
         -d "server_name=s239.xrea.com" \
         -d "api_secret_key=daKiZZFGtYMtRJwjDYVmSfTHhqy2MsfP" \
         -d "param[addr]=${GLOBAL_IP}"
-        
+    
     - name: 📂 Sync files
       env:
         SSH_KEY: ${{ secrets.SSH_KEY }}
